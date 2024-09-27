@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body{
+            background-image: url('background/repeated-square.webp');
+        } */
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .top{
+            border-bottom: 10px #046fb7 solid;
+        }
+        .side_btn{
+            float: right;
+            margin-top: 10px;
+            /* margin-right: 10px; */
+        }
+        /* .slider{
+            width: 100%;
+            height: 500px;
+            background-color: red;
+        } */
+        .btn{
+            color: #046fb7;
+            position: absolute;
+            width: 60px;
+            height: 45px;
+            top: 13px;
+        }
+        .register{
+            right: 85px;
+        }
+        .login{
+            right: 15px;
+        }
+        .avatar{
+            position: absolute;
+            right: 50px;
+            display: none;
+            border-radius: 50%;
+        }
+        .popup{
+            position: absolute;
+            top: 62px;
+            right: 30px;
+            width: 100px;
+            height: 60px;
+            border: 3px solid #eeeeee;
+            display: none;
+        }
+        .popup.show{
+            display: block;
+        }
+        .popup::before{
+            content: "";
+            position: absolute;
+            top: -20px;
+            left: 46px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent transparent #046fb7 transparent;
+        }
+        .inline_btn{
+            width: 100px;
+            height: 30px;
+        }
+        .footer{
+            width: 100%;
+            border-top: 10px #046fb7 solid;
+        }
+        .slider{
+            position: absolute;
+            top: 85.57px;
+            left: 0px;
+            height: 1500px;
+            border-right: 1px black solid;
+        }
+        .content{
+            margin-top: 5px;
+            position: absolute;
+            /* display: flex; */
+            right: 200px;
+            top: 85.57px;
+            height: 1500px;
+        }
+        .two{
+            display: inline-block;
+        }
+        .one{
+            display: inline-block;
+        }
+        .tag{
+            display: inline-block;
+            margin: 5px;
+            /* padding: 5px; */
+            background-color: #046fb7;
+            border: 1px solid #046fb7;
+            border-radius: 5px;
+        }
+        .three{
+            display: flex;
+        }
+        .three_content{
+            margin: 10px;
+            border: #046fb7 1px solid;
+            height: 30px;
+        }
+        .pre_content{
+            border-left: 2px solid blue;
+            height: 50px;
+            display: flex;
+            align-items: center;
+        }
+        li{
+            display: flex;
+        }
+        li:hover{
+            background-color: #046fb7;
+        }
+        .container{
+            width: 200px;
+        }
+        .pre_content{
+            position: absolute;
+            right: 0px;
+        }
+        .three{
+            width: 550px;
+        }
+
+        #inputText{
+            width: 666px;
+            height: 566px;
+        }
+        
+        .slider_content{
+            
+        }
+
+        /* 修饰tag大小 */
+        .tag_left{
+            
+            width: auto;
+            height: auto;
+            color: #000;
+            background-color: #eee;
+            
+        }
+        .tag_left:hover{
+            background-color: #046fb7;
+            border: 1px solid #046fb7;
+            color: #fff;
+        }
+        .tag_left.choosed{
+            background-color: #fff;
+            border: 3px solid #046fb7;
+            color: #000;
+        }
+        li{
+            list-style: none;
+        }
+        div .tag_ul{
+            display: flex;
+        }
+        div .tag_ul li{
+            margin: 5px;
+        }
+        #tag_div{
+            display: flex;
+        }
+        #addTag{
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <img src="schoolLogo.jpg" alt="" width="278" height="71">
+        <div class="side_btn">
+            <button class="register btn">注册</button>
+            <button class="login btn">登录</button>
+            <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45" height="45" class="avatar"></a>
+            
+        </div>
+        <div class="popup" id="myPopup">
+            <button class="outlogin inline_btn">退出登录</button>
+            <button class="outlogin inline_btn">发布的评论</button>
+          </div>
+    </div>
+
+
+
+        <div class="slider">
+            <div class="slider_content">
+                <div align="center"><h2>发布帖子</h2></div>
+                <!-- 一堆小div,作tag选择框, 通过"+"来添加div -->
+                <div id="tag_div">
+                    <ul class="tag_ul">
+                        <li><div class="tag_left">javascript</div></li>
+                        <li><div class="tag_left">python</div></li>
+                        <li><div class="tag_left">java</div></li>
+                    </ul>
+                    <a  id="addTag"><img src="add.png" alt="" width="20px" height="20px"></a>
+                    <!-- <a href="javascript:void(0)" id="addTag"><img src="add.png" alt="" width="20px" height="20px"></a> -->
+                </div>
+                
+
+                <!-- 输入文章内容, 第一行预备做标题, 其余为文章内容主体, 暂时不准备传送图片 -->
+                <textarea name="" id="inputText" cols="30" rows="10" placeholder="请输入搜索内容"></textarea>
+                <div>
+                    <button id="enter">发送</button>
+                </div>
+            </div>
+            
+        </div>
+
+        <ul>
+            <li></li>
+        </ul>
+
+        <div class="content">
+            <ul>
+                <li>
+                    <div class="container">
+                    
+                        <div class="one">
+                            <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45px" height="45px"></a>
+                        </div>
+                        <div class="two">
+                            <h3>这是主题</h3>
+                            <span class="tag">123</span>
+                            <span class="tag">123</span>
+                            <span>日期</span>
+                        </div>
+                    </div>
+                    
+                    <div class="three">
+                        <div class="three_content">3赞同</div>
+                        <div class="three_content">77帖子</div>
+                        <div class="three_content">64k浏览</div>
+                        <div class="pre_content">这是里面的文章内容预览</div>
+                    </div>
+                </li>
+                <li>
+                    <div class="container">
+                    
+                        <div class="one">
+                            <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45px" height="45px"></a>
+                        </div>
+                        <div class="two">
+                            <h3>这是主题</h3>
+                            <span class="tag">123</span>
+                            <span class="tag">123</span>
+                            <span>日期</span>
+                        </div>
+                    </div>
+                    
+                    <div class="three">
+                        <div class="three_content">3赞同</div>
+                        <div class="three_content">77帖子</div>
+                        <div class="three_content">64k浏览</div>
+                        <div class="pre_content">这是里面的文章内容预览</div>
+                    </div>
+                </li>
+            </ul>
+            
+            
+        </div>
+        
+
+        
+    
+
+   
+    
+    <!-- <div class="footer">
+        
+    </div> -->
+    <script>
+        const ul = document.querySelector('.content ul');
+// 这是json
+        const data = [{
+            "title":"主题信息",
+            // tag有多有少，所以用数组
+            "tag":["标签"],
+            "date":"日期",
+            "content":"内容预览",
+            "like":"赞同",
+            "post":"帖子",
+            "view":"浏览"
+        },{
+            "title":"主题信息",
+            // tag有多有少，所以用数组
+            "tag":["标签"],
+            "date":"日期",
+            "content":"内容预览",
+            "like":"赞同",
+            "post":"帖子",
+            "view":"浏览"
+        }];
+
+        function render(){
+            const li = document.createElement('li');
+            const random_color = Math.floor(Math.random()*16777215).toString(16);
+            li.innerHTML = `
+            <div class="container">
+                    
+                    <div class="one">
+                        <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45px" height="45px"></a>
+                    </div>
+                    <div class="two">
+                        <h3>这是主题</h3>
+                        <span class="tag">123</span>
+                        <span class="tag">123</span>
+                        <span>日期</span>
+                    </div>
+                </div>
+                
+                <div class="three">
+                    <div class="three_content">3赞同</div>
+                    <div class="three_content">7337帖子</div>
+                    <div class="three_content">64k浏览</div>
+                    <div class="pre_content" style="border-left: 5px solid #${random_color};">这是里面的文章内容预览</div>
+                </div>
+                `
+            ul.appendChild(li);
+        }
+
+        // 数据mock
+        render();
+        render();
+        render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+        // render();
+
+
+        const register = document.querySelector('.register');
+        const login = document.querySelector('.login');
+        const avatar = document.querySelector('.avatar');
+        const popup = document.getElementById('myPopup');
+        // 发送按钮
+        const enter = document.querySelector('#enter');
+
+        // 点击登录后两按钮消失, 登录成功显示头像框
+
+        register.addEventListener('click', function(){
+            
+        })
+
+        login.addEventListener('click', function(){
+            const state = true;
+            if(state){
+                register.style.display = 'none';
+                login.style.display = 'none';
+                avatar.style.display = 'block';
+            }
+        })
+        avatar.addEventListener('click', function(){
+            popup.classList.toggle('show');
+        })
+
+        // const inline_btn = document.querySelector('.inline_btn');
+        // 点击除按钮外的空白会使弹窗消失
+        window.addEventListener('click', function(event){
+            if (!event.target.matches('.avatar')) {
+                // 仅去除class
+                popup.classList.remove('show');
+            }
+        })
+
+        enter.addEventListener('click', function(){
+            // alert('已发送');
+            const li = document.createElement('li');
+            const random_color = Math.floor(Math.random()*16777215).toString(16);
+            li.innerHTML = `
+            <div class="container">
+                    
+                    <div class="one">
+                        <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45px" height="45px"></a>
+                    </div>
+                    <div class="two">
+                        <h3>这是主题</h3>
+                        <span class="tag">123</span>
+                        <span class="tag">123</span>
+                        <span>日期</span>
+                    </div>
+                </div>
+                
+                <div class="three">
+                    <div class="three_content">3赞同</div>
+                    <div class="three_content">7337帖子</div>
+                    <div class="three_content">64k浏览</div>
+                    <div class="pre_content" style="border-left: 5px solid #${random_color};">这是里面的文章内容预览</div>
+                </div>
+                `
+            ul.appendChild(li);
+        })
+
+
+        // 点击了添加按钮, 网页增加一个标签
+        const add_tag = document.querySelector('#addTag');
+        
+        add_tag.addEventListener('click', function(){
+           
+
+            const ul = document.querySelector('.tag_ul')
+            const li = document.createElement('li');
+            li.innerHTML = `<div class="tag_left">java</div>`;
+            // li.innerHTML = `<span class="tag">这是标签</span>`;
+            ul.appendChild(li);
+
+            // const tag = document.createElement('span');
+            // tag.classList.add('tag');
+            // tag.innerHTML = '这是标签';
+            // const tag_container = document.querySelector('.tag_container');
+            // tag_container.appendChild(tag);
+
+
+            const tag_arr = document.querySelectorAll('.tag_left');
+            tag_arr[tag_arr.length-1].addEventListener('click', function(){
+                tag_arr[tag_arr.length-1].classList.toggle('choosed')
+            })
+        })
+
+        const tag_arr = document.querySelectorAll('.tag_left');
+        console.log(tag_arr);
+        for(let i=0; i<tag_arr.length; i++){
+            tag_arr[i].addEventListener('click', function(){
+                tag_arr[i].classList.toggle('choosed');
+            })
+        }
+
+        
+        
+    </script>
+</body>
+</html>
