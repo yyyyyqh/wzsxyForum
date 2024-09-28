@@ -84,7 +84,7 @@
             margin-top: 5px;
             position: absolute;
             /* display: flex; */
-            right: 200px;
+            right: 120px;
             top: 85.57px;
             height: 1500px;
         }
@@ -115,7 +115,13 @@
             height: 50px;
             display: flex;
             align-items: center;
+
+            position: absolute;
+            right: 50px;
+            width: 170px;
+            /* 后期hover的时候跳到200px */
         }
+        
         li{
             display: flex;
         }
@@ -123,11 +129,7 @@
             background-color: #046fb7;
         }
         .container{
-            width: 200px;
-        }
-        .pre_content{
-            position: absolute;
-            right: 0px;
+            width: 280px;
         }
         .three{
             width: 550px;
@@ -226,7 +228,7 @@
 
         <div class="content">
             <ul>
-                <li>
+                <!-- <li>
                     <div class="container">
                     
                         <div class="one">
@@ -267,7 +269,7 @@
                         <div class="three_content">64k浏览</div>
                         <div class="pre_content">这是里面的文章内容预览</div>
                     </div>
-                </li>
+                </li> -->
             </ul>
             
             
@@ -301,25 +303,26 @@
 
         const ul = document.querySelector('.content ul');
 // 这是json
-        const data = [{
-            "title":"主题信息",
-            // tag有多有少，所以用数组
-            "tag":["标签"],
-            "date":"日期",
-            "content":"内容预览",
-            "like":"赞同",
-            "post":"帖子",
-            "view":"浏览"
-        },{
-            "title":"主题信息",
-            // tag有多有少，所以用数组
-            "tag":["标签"],
-            "date":"日期",
-            "content":"内容预览",
-            "like":"赞同",
-            "post":"帖子",
-            "view":"浏览"
-        }];
+        // const data = [{
+        //     "title":"主题信息",
+        //     // tag有多有少，所以用数组
+        //     "tag":["标签"],
+        //     "date":"日期",
+        //     "content":"内容预览",
+        //     "like":"赞同",
+        //     "post":"帖子",
+        //     "view":"浏览"
+        // },{
+        //     "title":"主题信息",
+        //     // tag有多有少，所以用数组
+        //     "tag":["标签"],
+        //     "date":"日期",
+        //     "content":"内容预览",
+        //     "like":"赞同",
+        //     "post":"帖子",
+        //     "view":"浏览"
+        // }];
+        const data = [];
 
         function render(){
             const li = document.createElement('li');
@@ -349,56 +352,10 @@
         }
 
         // 数据mock
-        render();
-        render();
-        render();
         // render();
         // render();
         // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
-        // render();
+
 
 
         const register = document.querySelector('.register');
@@ -407,6 +364,7 @@
         const popup = document.getElementById('myPopup');
         // 发送按钮
         const enter = document.querySelector('#enter');
+        //插入数据
         enter.addEventListener('click', function(){
             const random = Math.floor(Math.random() * postData.length) + 1;
             data.push({
@@ -419,7 +377,42 @@
                 "post":getRandomNumber(),
                 "view":getRandomNumber()
             })
+            //data数据调试
             console.log(data);
+        })
+        //添加数据
+        // let i = 2; //因为前两个是默认数据
+        let i = 0; //因为前两个是默认数据
+        enter.addEventListener('click', function(){
+            // alert('已发送');
+            const li = document.createElement('li');
+            const color_tmp = Math.floor(Math.random()*16777215).toString(16);
+            // 修复random颜色可能会随机5位导致非法
+            const random_color =  color_tmp.length == 6 ? color_tmp : '0' + color_tmp;
+
+            li.innerHTML = `
+            <div class="container">
+                    
+                    <div class="one">
+                        <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45px" height="45px"></a>
+                    </div>
+                    <div class="two">
+                        <h3>${data[i].title}</h3>
+                        <span class="tag">123</span>
+                        <span class="tag">123</span>
+                        <span>${data[i].date}</span>
+                    </div>
+                </div>
+                
+                <div class="three">
+                    <div class="three_content">${data[i].like}赞同</div>
+                    <div class="three_content">${data[i].post}帖子</div>
+                    <div class="three_content">${data[i].view}浏览</div>
+                    <div class="pre_content" style="border-left: 5px solid #${random_color};">${data[i].content}</div>
+                </div>
+                `
+            ul.appendChild(li);
+            i++; //每次添加完数据后，i加1
         })
 
         //对标准日期进行处理, 格式年-月-日 时:分:秒
@@ -490,33 +483,7 @@
             }
         })
 
-        enter.addEventListener('click', function(){
-            // alert('已发送');
-            const li = document.createElement('li');
-            const random_color = Math.floor(Math.random()*16777215).toString(16);
-            li.innerHTML = `
-            <div class="container">
-                    
-                    <div class="one">
-                        <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45px" height="45px"></a>
-                    </div>
-                    <div class="two">
-                        <h3>这是主题</h3>
-                        <span class="tag">123</span>
-                        <span class="tag">123</span>
-                        <span>日期</span>
-                    </div>
-                </div>
-                
-                <div class="three">
-                    <div class="three_content">3赞同</div>
-                    <div class="three_content">7337帖子</div>
-                    <div class="three_content">64k浏览</div>
-                    <div class="pre_content" style="border-left: 5px solid #${random_color};">这是里面的文章内容预览</div>
-                </div>
-                `
-            ul.appendChild(li);
-        })
+        
 
 
         // 点击了添加按钮, 网页增加一个标签
