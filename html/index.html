@@ -30,15 +30,15 @@
             <div class="slider_content">
                 <div align="center"><h2>发布帖子</h2></div>
                 <!-- 一堆小div,作tag选择框, 通过"+"来添加div -->
-                <div id="tag_div">
-                    <ul class="tag_ul">
-                        <li><div class="tag_left">javascript</div></li>
-                        <li><div class="tag_left">python</div></li>
-                        <li><div class="tag_left">java</div></li>
-                    </ul>
-                    <a  id="addTag"><img src="../img/add.png" alt="" width="20px" height="20px"></a>
-                    <!-- <a href="javascript:void(0)" id="addTag"><img src="add.png" alt="" width="20px" height="20px"></a> -->
-                </div>
+                <ul id="tagList">
+                    <!-- 初始的3个tag -->
+                    <li>
+                        <div class="tag">Tag 1</div>
+                        <div class="tag">Tag 2</div>
+                        <div class="tag">Tag 3</div>
+                        <span id="addButton">+</span>
+                    </li>
+                </ul>
                 
 
                 <!-- 输入文章内容, 第一行预备做标题, 其余为文章内容主体, 暂时不准备传送图片 -->
@@ -51,57 +51,10 @@
             
         </div>
 
-        <ul>
-            <li></li>
-        </ul>
-
         <div class="content">
             <ul>
-                <!-- <li>
-                    <div class="container">
-                    
-                        <div class="one">
-                            <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45px" height="45px"></a>
-                        </div>
-                        <div class="two">
-                            <h3>这是主题</h3>
-                            <span class="tag">123</span>
-                            <span class="tag">123</span>
-                            <span>日期</span>
-                        </div>
-                    </div>
-                    
-                    <div class="three">
-                        <div class="three_content">3赞同</div>
-                        <div class="three_content">77帖子</div>
-                        <div class="three_content">64k浏览</div>
-                        <div class="pre_content">这是里面的文章内容预览</div>
-                    </div>
-                </li>
-                <li>
-                    <div class="container">
-                    
-                        <div class="one">
-                            <a href="javascript:void(0)"><img src="defaultIcon.png" alt="" width="45px" height="45px"></a>
-                        </div>
-                        <div class="two">
-                            <h3>这是主题</h3>
-                            <span class="tag">123</span>
-                            <span class="tag">123</span>
-                            <span>日期</span>
-                        </div>
-                    </div>
-                    
-                    <div class="three">
-                        <div class="three_content">3赞同</div>
-                        <div class="three_content">77帖子</div>
-                        <div class="three_content">64k浏览</div>
-                        <div class="pre_content">这是里面的文章内容预览</div>
-                    </div>
-                </li> -->
+                <!-- data -->
             </ul>
-            
-            
         </div>
         
 
@@ -109,7 +62,7 @@
     
 
    
-    
+ <!-- TODO footer -->
     <!-- <div class="footer">
         
     </div> -->

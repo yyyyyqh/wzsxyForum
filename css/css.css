@@ -139,7 +139,8 @@ li {
     display: flex;
 }
 
-li:hover {
+/* TODO */
+.content ul li:hover {
     background-color: #046fb7;
 }
 
@@ -156,51 +157,51 @@ li:hover {
 #inputText {
     width: 666px;
     height: 566px;
-}
-
-.slider_content {}
-
-/* 修饰tag大小 */
-.tag_left {
-
-    width: auto;
-    height: auto;
-    color: #000;
-    background-color: #eee;
-
-}
-
-.tag_left:hover {
-    background-color: #046fb7;
-    border: 1px solid #046fb7;
-    color: #fff;
-}
-
-.tag_left.choosed {
-    background-color: #fff;
-    border: 3px solid #046fb7;
-    color: #000;
+    resize: none; /* 阻止用户调整文本域大小 */
 }
 
 li {
     list-style: none;
 }
 
-div .tag_ul {
-    display: flex;
-}
 
 div .tag_ul li {
     margin: 5px;
 }
 
-#tag_div {
-    display: flex;
+/* 修饰tag */
+li {
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.tagR {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    background-color: #046fb7;
+    border: 1px solid #046fb7;
+    border-radius: 5px;
 }
 
-#addTag {
-    display: flex;
-    align-items: center;
+div.tag {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
 }
+
+div.tag.active {
+    background-color: #62b7f0;
+    /* background-color: #e0e0e0; */
+}
+/* #tagList li{
+    width: auto;
+    display: flex;
+} */
 
 /* TODO 修饰a标签 */
+
+

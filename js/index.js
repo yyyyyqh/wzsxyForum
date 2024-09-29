@@ -1,3 +1,67 @@
+//TODO tag操作
+window.onload = function () {
+    const addButton = document.getElementById('addButton');
+    const tagList = document.getElementById('tagList');
+    const tags = document.querySelectorAll('.tag');
+    let selectedTags = 0;
+
+    // 为加号按钮添加点击事件
+    addButton.addEventListener('click', function () {
+        if (selectedTags < 3) {
+            const newTag = document.createElement('div');
+            newTag.className = 'tag';
+            newTag.contentEditable = true;
+            newTag.textContent = 'New Tag';
+
+            const li = tagList.children[0];
+            li.insertBefore(newTag, addButton);
+
+            // 新添加的tag也要绑定点击事件
+            newTag.addEventListener('click', handleTagClick);
+            
+            //处理新添加的tag失去焦点时的情况
+            let initialValue = 'New Tag';
+            newTag.innerText = "";
+            newTag.focus();
+
+            //失去焦点
+            newTag.addEventListener('blur', function () {
+                if (newTag.textContent === "") {
+                    newTag.textContent = initialValue;
+                }
+            });
+
+
+            newTag.addEventListener('keydown', function (event) {
+                if (event.key === "Enter") {
+                    //阻止默认行为
+                    event.preventDefault();
+                    newTag.blur();
+                }
+            });
+
+        }
+    });
+
+    // 为初始的tag绑定点击事件
+    tags.forEach(tag => {
+        tag.addEventListener('click', handleTagClick);
+    });
+
+    function handleTagClick() {
+         this.classList.toggle('active');
+        if (this.classList.contains('active')) {
+            if(selectedTags < 3){
+                selectedTags++;
+            }else{
+                this.classList.remove('active');
+            }
+        }else{
+            selectedTags--;
+        }
+    }
+};
+
 
 const postData = [
     "在当今这个信息爆炸的时代，人们每天都被海量的信息所包围。从社交媒体上的各种动态更新，到新闻网站上不断涌现的时政、娱乐、科技等各类新闻，我们的大脑仿佛在一个永不停歇的信息漩涡中。这些信息有的是有价值的知识，有的却仅仅是碎片化的、未经证实的传闻。如何在这海量的信息中筛选出真正对自己有用的内容，成为了现代人面临的一个重要挑战。",
@@ -16,17 +80,8 @@ const postData = [
 ]
 
 const ul = document.querySelector('.content ul');
-// 这是json
+// data json 格式
 // const data = [{
-//     "title":"主题信息",
-//     // tag有多有少，所以用数组
-//     "tag":["标签"],
-//     "date":"日期",
-//     "content":"内容预览",
-//     "like":"赞同",
-//     "post":"帖子",
-//     "view":"浏览"
-// },{
 //     "title":"主题信息",
 //     // tag有多有少，所以用数组
 //     "tag":["标签"],
@@ -39,38 +94,35 @@ const ul = document.querySelector('.content ul');
 
 const data = [];
 
-function render() {
-    const li = document.createElement('li');
-    const random_color = Math.floor(Math.random() * 16777215).toString(16);
-    li.innerHTML = `
-            <div class="container">
+// function render() {
+//     const li = document.createElement('li');
+//     const random_color = Math.floor(Math.random() * 16777215).toString(16);
+//     li.innerHTML = `
+//             <div class="container">
                     
-                    <div class="one">
-                        <a href="javascript:void(0)"><img src="../img/defaultIcon.png" alt="" width="45px" height="45px"></a>
-                    </div>
-                    <div class="two">
-                        <h3>这是主题</h3>
-                        <span class="tag">123</span>
-                        <span class="tag">123</span>
-                        <span>日期</span>
-                    </div>
-                </div>
+//                     <div class="one">
+//                         <a href="javascript:void(0)"><img src="../img/defaultIcon.png" alt="" width="45px" height="45px"></a>
+//                     </div>
+//                     <div class="two">
+//                         <h3>这是主题</h3>
+//                         <span class="tag">123</span>
+//                         <span class="tag">123</span>
+//                         <span>日期</span>
+//                     </div>
+//                 </div>
                 
-                <div class="three">
-                    <div class="three_content">3赞同</div>
-                    <div class="three_content">7337帖子</div>
-                    <div class="three_content">64k浏览</div>
-                    <div class="pre_content" style="border-left: 5px solid #${random_color};">这是里面的文章内容预览</div>
-                </div>
-                `
-    ul.appendChild(li);
-}
+//                 <div class="three">
+//                     <div class="three_content">3赞同</div>
+//                     <div class="three_content">7337帖子</div>
+//                     <div class="three_content">64k浏览</div>
+//                     <div class="pre_content" style="border-left: 5px solid #${random_color};">这是里面的文章内容预览</div>
+//                 </div>
+//                 `
+//     ul.appendChild(li);
+// }
 
 // 数据mock
 // render();
-// render();
-// render();
-
 
 
 const register = document.querySelector('.register');
@@ -81,7 +133,7 @@ const popup = document.getElementById('myPopup');
 const enter = document.querySelector('#enter');
 //插入数据
 enter.addEventListener('click', function () {
-    const random = Math.floor(Math.random() * postData.length) + 1;
+    const random = Math.floor(Math.random() * postData.length);
     data.push({
         "title": "主题信息",
         // tag有多有少，所以用数组
@@ -108,12 +160,8 @@ enter.addEventListener('click', function () {
     let str = "";
     const tags = gatherTag();
     for (let i = 0; i < tags.length; i++) {
-        str += '<span class="tag">' + tags[i] + '</span>';
+        str += '<span class="tagR">' + tags[i] + '</span>';
     }
-    // gatherTag().forEach((item, index) => {
-    //     str += item;
-    // })
-    // alert(str)
 
     li.innerHTML = `
             <div class="container">
@@ -123,9 +171,7 @@ enter.addEventListener('click', function () {
                     </div>
                     <div class="two">
                         <a href="#"><h3>${data[i].title}</h3></a>` + str +
-        // <span class="tag">123</span>
-        // <span class="tag">123</span>
-        `<span>${data[i].date}</span>
+                                                                                `<span>${data[i].date}</span>
                     </div>
                 </div>
                 
@@ -162,22 +208,15 @@ function contentHandle(content) {
         return content;
     }
 }
+
+
 //收集tag
 function gatherTag() {
-    const div_arr = document.querySelectorAll('.tag_left.choosed');
-    //TODO 处理tag限制, 最多3个, 超出会影响显示效果
-
-    // console.log(div_arr);
     const tmp_arr = [];
+    const tags = document.querySelectorAll('.tag.active');
+    console.log(tags);
+    tags.forEach(tag => tmp_arr.push(tag.innerText))
     //tmp_arr存储tag们的内容
-    for (let i = 0; i < div_arr.length; i++) {
-        tmp_arr.push(div_arr[i].innerHTML);
-    }
-
-    // for(let i=0; i<tmp_arr.length;i++){
-    //     alert(tmp_arr[i]);
-    // }
-
     return tmp_arr;
 }
 
@@ -209,45 +248,3 @@ window.addEventListener('click', function (event) {
         popup.classList.remove('show');
     }
 })
-
-
-
-
-// 点击了添加按钮, 网页增加一个标签
-const add_tag = document.querySelector('#addTag');
-
-add_tag.addEventListener('click', function () {
-
-
-    const ul = document.querySelector('.tag_ul')
-    const li = document.createElement('li');
-    li.innerHTML = `<div class="tag_left">java</div>`;
-    // li.innerHTML = `<span class="tag">这是标签</span>`;
-    ul.appendChild(li);
-
-    // const tag = document.createElement('span');
-    // tag.classList.add('tag');
-    // tag.innerHTML = '这是标签';
-    // const tag_container = document.querySelector('.tag_container');
-    // tag_container.appendChild(tag);
-
-
-    const tag_arr = document.querySelectorAll('.tag_left');
-    tag_arr[tag_arr.length - 1].addEventListener('click', function () {
-        alert(div_arr.length)
-        const div_arr = document.querySelectorAll('.tag_left.choosed');
-        if (div_arr.length < 2) {
-
-            tag_arr[tag_arr.length - 1].classList.toggle('choosed')
-        }
-        //TODO 处理
-    })
-})
-
-const tag_arr = document.querySelectorAll('.tag_left');
-console.log(tag_arr);
-for (let i = 0; i < tag_arr.length; i++) {
-    tag_arr[i].addEventListener('click', function () {
-        tag_arr[i].classList.toggle('choosed');
-    })
-}
