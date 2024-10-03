@@ -1,0 +1,47 @@
+/* 左边修饰 */
+.slider {
+    position: absolute;
+    top: 85.57px;
+    left: 0px;
+    /* height: 1500px; */
+    /* border-right: 1px black solid; */
+}
+
+/* areatext */
+#inputText {
+    width: 666px;
+    height: 566px;
+    resize: none; /* 阻止用户调整文本域大小 */
+}
+
+/* 修饰左边的tag */
+li {
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    display: inline-block;
+    margin: 5px;
+    /* padding: 5px; */
+    background-color: #046fb7;
+    border: 1px solid #046fb7;
+    border-radius: 5px;
+}
+
+div.tag {
+    display: inline-block;
+    /* background-color: #f0f0f0; */
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+div.tag.active {
+    /* background-color: #62b7f0; */
+    /* background-color: #e0e0e0; */
+    border: 2px dotted #62b7f0;
+}
+

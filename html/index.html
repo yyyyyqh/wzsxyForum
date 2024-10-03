@@ -5,24 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/css.css">
-    <!-- <style>
-        
-    </style> -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/logoNav.css">
+    <link rel="stylesheet" href="../css/left.css">
+    <link rel="stylesheet" href="../css/rightMenu.css">
+    <link rel="stylesheet" href="../css/right.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/new.css">
+
 </head>
 <body>
-    <div class="top">
-        <img src="../img/schoolLogo.jpg" alt="" width="278" height="71">
-        <div class="side_btn">
-            <button class="register btn">注册</button>
-            <button class="login btn">登录</button>
-            <a href="javascript:void(0)"><img src="../img/defaultIcon.png" alt="" width="45" height="45" class="avatar"></a>
-            
+    <header>
+        <div class="containerTop">
+            <img src="../img/schoolLogo.png" alt="" width="278" height="71">
+            <div class="indexMenu">
+                <a href="#">123</a>
+                <a href="#">123</a>
+                <a href="#">123</a>
+                <a href="#">123</a>
+            </div>
+            <div class="side_btn" style="margin-right: 100px;">
+                <button class="btn">注册</button>
+                <button class="btn">登录</button>
+            </div>
         </div>
-        <div class="popup" id="myPopup">
-            <button class="outlogin inline_btn">退出登录</button>
-            <button class="outlogin inline_btn">发布的帖子</button>
-          </div>
-    </div>
+        
+        
+    </header>
 
 
 
@@ -44,8 +53,7 @@
                 <!-- 输入文章内容, 第一行预备做标题, 其余为文章内容主体, 暂时不准备传送图片 -->
                 <textarea name="" id="inputText" cols="30" rows="10" placeholder="请输入搜索内容"></textarea>
                 <div>
-                    <button id="enter">发送</button>
-                    <input type="text" id="debug_text">
+                    <button id="enter" style="width: 100%;">发送</button>
                 </div>
             </div>
             
@@ -58,7 +66,13 @@
         </div>
         
 
-        
+        <script>
+            // TODO List
+            // TODO 帖子输入框增加一个闪动的提示符
+            // TODO 调整整体UI风格
+            // TODO 登录成功后弹窗, 提示登录成功, 注册登录按钮消失
+
+        </script>
     
 
    

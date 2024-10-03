@@ -1,0 +1,54 @@
+header {
+    position: fixed;
+    width: 100%;
+    height: 71px;
+    z-index: 999;
+}
+header .containerTop {
+    display: flex;
+    justify-content: space-between;
+}
+header .indexMenu {
+    display: flex;
+    align-items: center;
+}
+header .indexMenu a {
+    margin-left: 35px;
+    text-decoration: none;
+    color: #000;
+}
+header .indexMenu a:hover {
+    
+}
+
+.side_btn {
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    
+}
+
+.side_btn .btn {
+
+    width: 60px;
+    height: 42px;
+    margin-right: 10px;
+    background: none;
+}
+
+body {
+    /* 背景图片始终跟随 */
+    background-attachment: fixed;
+}
+
+.tag {
+    background: none;
+    color: #fff;
+}
+
+#inputText {
+    background: none;
+    color: #fff;
+    font-size: 1.5em;
+}

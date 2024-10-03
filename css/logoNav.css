@@ -1,0 +1,70 @@
+.login {
+    right: 15px;
+}
+
+.avatar {
+    position: absolute;
+    right: 50px;
+    display: none;
+    border-radius: 50%;
+}
+
+/* 点击头像弹出的下拉菜单 */
+.popup {
+    position: absolute;
+    top: 62px;
+    right: 30px;
+    width: 100px;
+    height: 60px;
+    border: 3px solid #eeeeee;
+    display: none;
+    /* 提高层级, 防止被帖子挡住 */
+    z-index: 999;
+}
+
+.popup.show {
+    display: block;
+}
+
+.popup::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 46px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #046fb7 transparent;
+}
+
+/* 注册, 登录按钮的通用修饰 */
+/* .btn {
+    color: #046fb7;
+    position: absolute;
+    width: 60px;
+    height: 45px;
+    top: 13px;
+} */
+
+/* 注册, 登录按钮的框体 */
+.side_btn {
+    /* float: right;
+    margin-top: 10px; */
+    /* margin-right: 10px; */
+}
+
+/* 弹出下拉菜单的按钮大小 */
+.inline_btn {
+    width: 100px;
+    height: 30px;
+}
+
+/* 注册按钮固定位置 */
+.register {
+    right: 85px;
+}
+
+/* 添加logo与正文的分割线 */
+.top {
+    border-bottom: 10px #046fb7 solid;
+}
+
