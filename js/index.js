@@ -102,7 +102,7 @@ enter.addEventListener('click', function () {
         "view": getRandomNumber()
     })
     //data数据调试
-    console.log(data);
+    // console.log(data);
 })
 //添加数据
 let i = 0;
@@ -171,43 +171,45 @@ function contentHandle(content) {
 function gatherTag() {
     const tmp_arr = [];
     const tags = document.querySelectorAll('.tag.active');
-    console.log(tags);
+    // console.log(tags);
     tags.forEach(tag => tmp_arr.push(tag.innerText))
     //tmp_arr存储tag们的内容
     return tmp_arr;
 }
 
-
-
-// 点击登录后两按钮消失, 登录成功显示头像框
-
-register.addEventListener('click', function () {
-
-})
-
-login.addEventListener('click', function () {
-    const state = true;
-    if (state) {
-        register.style.display = 'none';
-        login.style.display = 'none';
-        avatar.style.display = 'block';
-    }
-})
-avatar.addEventListener('click', function () {
-    popup.classList.toggle('show');
-})
-
-// const inline_btn = document.querySelector('.inline_btn');
-// 点击除按钮外的空白会使弹窗消失
-window.addEventListener('click', function (event) {
-    if (!event.target.matches('.avatar')) {
-        // 仅去除class
-        popup.classList.remove('show');
-    }
-})
-
-
 const details = document.getElementsByClassName('details1');
-details.addEventListener('click', function () {
+details[0].addEventListener('click', function () {
     details.preventDefault;
 })
+
+
+// const postItem = document.getElementsByName('pre_content');
+
+// postItem[0].addEventListener('click', function () {
+//     alert("test")
+// })
+
+
+// const liContainers = document.querySelectorAll('.liContainer');
+//          liContainers.forEach((liContainer) => {
+//            liContainer.addEventListener('click', (e) => {
+//              console.log('liContainer被点击了');
+//              // 可以在这里添加更多针对点击事件的操作，例如获取点击元素内部的数据等
+//            });
+//          });
+
+// 事件委托
+//冒泡机制: 内层->外层->...层层执行
+const contentUL = document.querySelector('.content ul');
+   if (contentUL) {
+     contentUL.addEventListener('click', (e) => {
+       // 判断点击的元素是否是liContainer类的元素
+       if (e.target.classList.contains('liContainer')) {
+         console.log('liContainer被点击了');
+         // 可以在这里添加更多针对点击事件的操作，例如获取点击元素内部的数据等
+         location.href = 'article.html';
+       }
+     });
+   } else {
+     console.log('没有找到contentUL元素');
+   }

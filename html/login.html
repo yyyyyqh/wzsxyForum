@@ -1,1 +1,67 @@
-//TODO 仿照机场登录界面，做一个登录界面, 登录完成跳转回index
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    
+    <header>
+        <img src="../img/schoolLogo.png" alt="" width="300px" height="77.5px">
+        <!-- <h2 class="logo">logo</h2> -->
+        <nav class="navigation">
+            <a href="#">首页</a>
+            <a href="#">风景</a>
+            <a href="#">地图</a>
+            <a href="#">帖子</a>
+            <button class="btnLogin-popup">Login</button>
+        </nav>
+    </header>
+    
+
+    <!-- 容器 -->
+    <div class="wrapper">
+        <!-- 登录框 -->
+        <div class="formBox login">
+            <h2 style="text-align: center;">Login</h2>
+            <form action="#">
+                <div class="inputBox">
+                    <span class="icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <input type="email" required>
+                    <label>Username</label>
+                </div>
+                <div class="inputBox">
+                    <span class="icon">
+                        <ion-icon name="eye-outline"></ion-icon>
+                    </span>
+                    <input type="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label for="#"><input type="checkbox">Remember me</label>
+                    <a href="#" class="forget">Forget?</a>
+                </div>
+                <div class="loginBtn">
+                    <button class="btn">Login</button>
+                </div>
+                
+                
+                <div class="register" style="text-align: center;">
+                    <label for="#">Do not have account</label>&nbsp;
+                    <a href="test2.html" class="forget">Register</a>&nbsp;
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>
+
+<!-- 1.公告 2.风景 3.地图 4.帖子 5.帖子排序 -->
