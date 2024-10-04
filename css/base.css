@@ -24,3 +24,13 @@ body{
 /* body{
         background-image: url('background/repeated-square.webp');
     } */
+
+a {
+    text-decoration: none;
+    color: #fa9e9e;
+}
+/* date */
+.two span {
+    color: rgb(42, 246, 246);
+    font-size: 0.3em;
+}

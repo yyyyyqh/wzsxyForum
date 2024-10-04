@@ -80,50 +80,8 @@ const postData = [
 ]
 
 const ul = document.querySelector('.content ul');
-// data json 格式
-// const data = [{
-//     "title":"主题信息",
-//     // tag有多有少，所以用数组
-//     "tag":["标签"],
-//     "date":"日期",
-//     "content":"内容预览",
-//     "like":"赞同",
-//     "post":"帖子",
-//     "view":"浏览"
-// }];
 
 const data = [];
-
-// function render() {
-//     const li = document.createElement('li');
-//     const random_color = Math.floor(Math.random() * 16777215).toString(16);
-//     li.innerHTML = `
-//             <div class="container">
-                    
-//                     <div class="one">
-//                         <a href="javascript:void(0)"><img src="../img/defaultIcon.png" alt="" width="45px" height="45px"></a>
-//                     </div>
-//                     <div class="two">
-//                         <h3>这是主题</h3>
-//                         <span class="tag">123</span>
-//                         <span class="tag">123</span>
-//                         <span>日期</span>
-//                     </div>
-//                 </div>
-                
-//                 <div class="three">
-//                     <div class="three_content">3赞同</div>
-//                     <div class="three_content">7337帖子</div>
-//                     <div class="three_content">64k浏览</div>
-//                     <div class="pre_content" style="border-left: 5px solid #${random_color};">这是里面的文章内容预览</div>
-//                 </div>
-//                 `
-//     ul.appendChild(li);
-// }
-
-// 数据mock
-// render();
-
 
 const register = document.querySelector('.register');
 const login = document.querySelector('.login');
@@ -136,7 +94,6 @@ enter.addEventListener('click', function () {
     const random = Math.floor(Math.random() * postData.length);
     data.push({
         "title": "主题信息",
-        // tag有多有少，所以用数组
         "tag": gatherTag(),
         "date": formatDate(new Date),
         "content": contentHandle(postData[random]),
@@ -148,8 +105,7 @@ enter.addEventListener('click', function () {
     console.log(data);
 })
 //添加数据
-// let i = 2; //因为前两个是默认数据
-let i = 0; //因为前两个是默认数据
+let i = 0;
 enter.addEventListener('click', function () {
     // alert('已发送');
     const li = document.createElement('li');
@@ -164,7 +120,7 @@ enter.addEventListener('click', function () {
     }
 
     li.innerHTML = `
-            <div class="container">
+            <div class="liContainer">
                     
                     <div class="one">
                         <a href="javascript:void(0)"><img src="../img/defaultIcon.png" alt="" width="45px" height="45px"></a>
@@ -173,14 +129,15 @@ enter.addEventListener('click', function () {
                         <a href="#"><h3>${data[i].title}</h3></a>` + str +
                                                                                 `<span>${data[i].date}</span>
                     </div>
-                </div>
-                
-                <div class="three">
+                    <div class="three">
                     <div class="three_content">${data[i].like}赞同</div>
                     <div class="three_content">${data[i].post}帖子</div>
                     <div class="three_content">${data[i].view}浏览</div>
                     <div class="pre_content" style="border-left: 5px solid #${random_color};">${data[i].content}</div>
                 </div>
+                </div>
+                
+                
                 `
     ul.appendChild(li);
     i++; //每次添加完数据后，i加1
@@ -247,4 +204,10 @@ window.addEventListener('click', function (event) {
         // 仅去除class
         popup.classList.remove('show');
     }
+})
+
+
+const details = document.getElementsByClassName('details1');
+details.addEventListener('click', function () {
+    details.preventDefault;
 })

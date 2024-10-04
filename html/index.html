@@ -19,10 +19,17 @@
         <div class="containerTop">
             <img src="../img/schoolLogo.png" alt="" width="278" height="71">
             <div class="indexMenu">
-                <a href="#">123</a>
-                <a href="#">123</a>
-                <a href="#">123</a>
-                <a href="#">123</a>
+                <a href="#">首页</a>
+                <a href="#">公告</a>
+                <details class="details1">
+                    <summary style="margin-left: 42px;">排序</summary>
+                    <div class="bigDiv">
+                        <p><a href="#">升序</a></p>
+                        <p><a href="#">降序</a></p>
+                    </div>
+                </details>
+                <!-- <a href="#">排序</a> -->
+                <a href="#">校园</a>
             </div>
             <div class="side_btn" style="margin-right: 100px;">
                 <button class="btn">注册</button>
@@ -34,10 +41,13 @@
     </header>
 
 
-
+    <div class="container">
         <div class="slider">
             <div class="slider_content">
-                <div align="center"><h2>发布帖子</h2></div>
+                <div align="center">
+                    <img src="../img/newPost.png" alt="" width="33.52px" height="33.52px">
+                    <!-- <h2>发布帖子</h2> -->
+                </div>
                 <!-- 一堆小div,作tag选择框, 通过"+"来添加div -->
                 <ul id="tagList">
                     <!-- 初始的3个tag -->
@@ -55,6 +65,7 @@
                 <div>
                     <button id="enter" style="width: 100%;">发送</button>
                 </div>
+                <span class="blinkTri">◀</span>
             </div>
             
         </div>
@@ -62,8 +73,25 @@
         <div class="content">
             <ul>
                 <!-- data -->
+                <!-- <div class="liContainer">
+                    
+                    <div class="one">
+                        <a href="javascript:void(0)"><img src="../img/defaultIcon.png" alt="" width="45px" height="45px"></a>
+                    </div>
+                    <div class="two">
+                        <a href="#"><h3>${data[i].title}</h3></a><span>${data[i].date}</span>
+                    </div>
+                    <div class="three">
+                    <div class="three_content">${data[i].like}赞同</div>
+                    <div class="three_content">${data[i].post}帖子</div>
+                    <div class="three_content">${data[i].view}浏览</div>
+                    <div class="pre_content" style="border-left: 5px solid #000;">${data[i].content}</div>
+                </div>
+                </div> -->
             </ul>
         </div>
+    </div>
+        
         
 
         <script>
